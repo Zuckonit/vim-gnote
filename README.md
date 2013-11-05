@@ -6,7 +6,7 @@ the subject of your note will be your filename without suffix by default, so sam
 
 Why I write this plugin
 =======================
-I'd like to write note in my vim. I cannot imagination there is no when I am noting.  
+I'd like to write note in my vim. I cannot imagination there is no vim when I am noting.  
 So I write this.
   
 Requirements
