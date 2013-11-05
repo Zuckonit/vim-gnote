@@ -6,6 +6,8 @@ endif
 
 function! Gnote()
 
+let s:mail_host = exists('g:gnote_mail_host') ? g:gnote_mail_host : 'imap.google.com'
+let s:mail_port = exists('g:gnote_mail_port') ? g:gnote_mail_port : 993
 python << EOF
 
 import imaplib
@@ -14,8 +16,9 @@ import vim
 import os
 
 class Gmail(object):
-    IMAP_SERVER= 'imap.gmail.com'
-    IMAP_PORT  = 993
+    IMAP_SERVER = vim.eval('s:mail_host')
+    IMAP_PORT   = vim.eval('s:mail_port')
+    print 'establish connect to ', IMAP_SERVER , '...'
 
     def __init__(self,usr,pwd):
         self.usr = usr
@@ -29,9 +32,6 @@ class Gmail(object):
         if code == True:
             self.status = 1
         return code
-
-    def logout(self):
-        self.hld.logout()
 
     @staticmethod
     def checkcode(code):
@@ -69,13 +69,11 @@ class Gmail(object):
         code = self.checkcode(rc)
         return code
 
-    def logout(self):
-        self.hld.logout()
 
 def main():
-    user = vim.eval("g:gnote_gmail_username")
-    pawd = vim.eval("g:gnote_gmail_password")
-    mailbox = vim.eval("g:gnote_gmail_mailbox").strip()
+    user = vim.eval('g:gnote_mail_username')
+    pawd = vim.eval('g:gnote_mail_password')
+    mailbox = vim.eval('g:gnote_mail_mailbox').strip() or 'gnote'
     bsname = os.path.basename(vim.eval('expand("%")'))
     mbox = bsname.strip('.').split('.')
     subject = os.path.basename(mbox[0])
@@ -93,7 +91,6 @@ def main():
         print 'send to %s successful!'%mailbox
     else:
         print 'send failed!'
-    gmail.logout()
 
 if __name__ == '__main__':
     main()
