@@ -57,9 +57,7 @@ let g:gnote_gmail_mailbox = "mailbox name you prefer"
 ```
   
 * other email
-```
-just take below examples as reference, the imap settings can be found at the related official website
-```
+>   just take above examples as reference, the imap settings can be found at the related official website
 
 TODO
 =======
