@@ -21,10 +21,10 @@ Configuration
 ~~let g:gnote_gmail_password="your gmail password"~~  
 ```
 let g:gnote_mail_host="imap host of your mail" (default is imap.google.com)
-let g:gnote_mail_port="imap port of your mial" (default is 993)
+let g:gnote_mail_port="imap port of your mail" (default is 993)
 let g:gnote_mail_username="your mail username"
 let g:gnote_mail_password="your mail password"
-```
+```m
   
 * change the default mailbox name (default is 'gnote')
 ~~let g:gnote_gmail_mailbox="NOTES"~~  
