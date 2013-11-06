@@ -17,18 +17,19 @@ Requirements
 Configuration
 ===============
 * account settings
+~~let g:gnote_gmail_username="your gmail username"~~
+~~let g:gnote_gmail_password="your gmail password"~~
 ```
 let g:gnote_mail_host="imap host of your mail" (default is imap.google.com)
 let g:gnote_mail_port="imap port of your mial" (default is 993)
-~~let g:gnote_gmail_username="your gmail username"~~
 let g:gnote_mail_username="your mail username"
-~~let g:gnote_gmail_password="your gmail password"~~
 let g:gnote_mail_password="your mail password"
 ```
   
 * change the default mailbox name (default is 'gnote')
+~~let g:gnote_gmail_mailbox="NOTES"~~
 ```
-let g:gnote_gmail_mailbox="NOTES"
+let g:gnote_mail_mailbox="NOTES"
 ```
   
 * keybord (you can also set the short cuts in your vim config), for example:
