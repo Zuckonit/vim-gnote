@@ -12,22 +12,24 @@ So I write this.
 Requirements
 ===============
 * vim python2 support: vim-gnote is based on python2, so your vim should be builded with python2 support.  
-* ~~gmail account~~~ mail account which supports imap protocol
+* mail account  
+>    ~~gmail account~~~   
+>	mail account which supports imap protocol  
   
 Configuration
 ===============
-* account settings
-~~let g:gnote_gmail_username="your gmail username"~~  
-~~let g:gnote_gmail_password="your gmail password"~~  
+* account settings  
+>   ~~let g:gnote_gmail_username="your gmail username"~~  
+>   ~~let g:gnote_gmail_password="your gmail password"~~  
 ```
 let g:gnote_mail_host="imap host of your mail" (default is imap.google.com)
 let g:gnote_mail_port="imap port of your mail" (default is 993)
 let g:gnote_mail_username="your mail username"
 let g:gnote_mail_password="your mail password"
-```m
+```
   
 * change the default mailbox name (default is 'gnote')
-~~let g:gnote_gmail_mailbox="NOTES"~~  
+>   ~~let g:gnote_gmail_mailbox="NOTES"~~  
 ```
 let g:gnote_mail_mailbox="NOTES"
 ```
