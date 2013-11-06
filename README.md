@@ -1,6 +1,6 @@
 Introduction
 ==============
->   use you gmail as your note place.
+>   use you ~~gmail~~ mailbox as your note place.
 >   when you use this plugin, your can send the current text to your mailbox(~~gmail~~), within the default inbox named "gnote",    
 the subject of your note will be your filename without suffix by default, so same filename(without suffix) will be in same dialogue. Just have a try, you'll get the effect.
 
