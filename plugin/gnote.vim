@@ -69,6 +69,12 @@ class Gmail(object):
         code = self.checkcode(rc)
         return code
 
+def read_input(message='input'):
+    vim.command('call inputsave()')
+    vim.command("let user_input = input('" + message + ": ')")
+    vim.command('call inputrestore()')
+    vim.command('redraw')
+    return vim.eval('user_input')
 
 def main():
     user = vim.eval('g:gnote_mail_username')
@@ -77,6 +83,8 @@ def main():
     bsname = os.path.basename(vim.eval('expand("%")'))
     mbox = bsname.strip('.').split('.')
     subject = os.path.basename(mbox[0])
+    if not subject:
+        subject = read_input("Subject")
     mailbox = mailbox or mbox[0]
     gmail = Gmail(user,pawd)
     gmail.login()
