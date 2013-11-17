@@ -41,9 +41,9 @@ class Gmail(object):
         else:
             return False
 
-    def __del__(self):
+    def logout(self):
         if self.status == 1:
-            self.hld.logout()
+            print self.hld.logout()[0]
 
     def addbox(self,mailbox):
         rc,res = self.hld.create(mailbox)
@@ -99,6 +99,7 @@ def main():
         print 'send to %s successful!'%mailbox
     else:
         print 'send failed!'
+    gmail.logout()
 
 if __name__ == '__main__':
     main()
