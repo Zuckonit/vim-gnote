@@ -1,5 +1,5 @@
 if !has("python")
-    echo "Error:no python supported!"
+    echo "Error: your vim has no python supported!"
     finish
 endif
 
