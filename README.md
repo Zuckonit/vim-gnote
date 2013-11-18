@@ -13,7 +13,7 @@ Requirements
 ===============
 * vim python2 support: vim-gnote is based on python2, so your vim should be builded with python2 support.  
 * mail account  
->    ~~gmail account~~~   
+> ~~gmail account~~~   
 >	mail account which supports imap protocol  
   
 Configuration
@@ -45,7 +45,7 @@ Config Example
 ```
 let g:gnote_mail_username = "xxx@gmail.com"
 let g:gnote_mail_password = "your google mail password"
-let g:gnote_gmail_mailbox = "mailbox name you prefer"
+let g:gnote_mail_mailbox = "mailbox name you prefer"
 ```
   
 * assume you'd like to use qq mail
@@ -53,7 +53,7 @@ let g:gnote_gmail_mailbox = "mailbox name you prefer"
 let g:gnote_mail_host = "imap.exmail.qq.com"
 let g:gnote_mail_username = "xxxx@qq.com"
 let g:gnote_mail_password = "your qq mail password"
-let g:gnote_gmail_mailbox = "mailbox name you prefer"
+let g:gnote_mail_mailbox = "mailbox name you prefer"
 ```
   
 * other email
