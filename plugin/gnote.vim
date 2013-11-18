@@ -6,7 +6,7 @@ endif
 
 function! Gnote()
 
-let s:mail_host = exists('g:gnote_mail_host') ? g:gnote_mail_host : 'imap.google.com'
+let s:mail_host = exists('g:gnote_mail_host') ? g:gnote_mail_host : 'imap.gmail.com'
 let s:mail_port = exists('g:gnote_mail_port') ? g:gnote_mail_port : 993
 python << EOF
 
@@ -18,7 +18,7 @@ import os
 class Gmail(object):
     IMAP_SERVER = vim.eval('s:mail_host')
     IMAP_PORT   = vim.eval('s:mail_port')
-    print 'establish connect to ', IMAP_SERVER , '...'
+    print 'establish connect to', IMAP_SERVER , '...'
 
     def __init__(self,usr,pwd):
         self.usr = usr
@@ -36,10 +36,7 @@ class Gmail(object):
     @staticmethod
     def checkcode(code):
         code = str(code).upper()
-        if 'OK' in code:
-            return True
-        else:
-            return False
+        return True if 'OK' in code else False
 
     def logout(self):
         if self.status == 1:
