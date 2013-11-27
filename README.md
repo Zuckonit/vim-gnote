@@ -12,6 +12,7 @@ So I write this.
 Requirements
 ===============
 * vim python2 support: vim-gnote is based on python2, so your vim should be builded with python2 support.  
+
 * mail account  
 > ~~gmail account~~~   
 >	mail account which supports imap protocol  
