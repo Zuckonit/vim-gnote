@@ -57,8 +57,9 @@ let g:gnote_mail_password = "your qq mail password"
 let g:gnote_mail_mailbox = "mailbox name you prefer"
 ```
   
-* other email
->   just take above examples as reference, the imap settings can be found at the related official website
+* other email  
+```just take above examples as reference, the imap settings can be found at the related official website```
+
 
 TODO
 =======
