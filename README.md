@@ -71,7 +71,7 @@ Config Example
 Issue
 =======
 > cannot be used when using two-step verification for your google email.
-> please set a special password for this plugin, here are the (steps)[https://support.google.com/accounts/answer/185833]
+> please set a special password for this plugin, here are the [step](https://support.google.com/accounts/answer/185833)
 
 TODO
 =======
