@@ -11,11 +11,13 @@ function! Gnote()
 
 let s:mail_host = exists('g:gnote_mail_host') ? g:gnote_mail_host : 'imap.gmail.com'
 let s:mail_port = exists('g:gnote_mail_port') ? g:gnote_mail_port : 993
-let s:auto_convert_mkd = exists('g:auto_convert_markdown') ? g:auto_convert_markdown : 0
+let s:auto_convert_mkd = exists('g:gnote_auto_convert_markdown') ? g:gnote_auto_convert_markdown : 0
+
 python << EOF
 #-*- coding:utf-8 -*-
 import imaplib
-from email.message import Message
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 import vim
 import os
 
@@ -61,11 +63,14 @@ class Gmail(object):
         code = self.checkcode(rc)
         return code
 
-    def addnote(self,mailbox,content, subject):
-        msg = Message()
+    def addnote(self,mailbox,content, subject, fmt=None):
+        if fmt is None:
+            fmt = 'plain'
+        msg = MIMEMultipart('alternative')
         msg['Subject'] = subject
         msg['From'] = self.usr.split('@')[0]
-        msg.set_payload(content)
+        content = MIMEText(content ,fmt)
+        msg.attach(content)
         rc,res  = self.hld.append(mailbox,None,None,msg.as_string())
         code = self.checkcode(rc)
         return code
@@ -87,33 +92,31 @@ def main():
     if not subject:
         subject = read_input("Subject")
     mailbox = mailbox or mbox[0]
-    gmail = Gmail(user,pawd)
-    gmail.login()
-    try:
-        gmail.addbox(mailbox)
-    except:
-        pass
-
     note = '\r\n'.join(vim.current.buffer[:])
+    fmt=None
     if vim.eval('&filetype') == 'markdown':
         if vim.eval('s:auto_convert_mkd') == '1':
             try:
                 import markdown
                 note = unicode(note, 'utf-8')
                 note = markdown.markdown(note).encode('utf-8')
+                fmt = 'html'
             except ImportError:
                 print "no module named  markdown"
                 import sys
                 sys.exit(1)
-    code = gmail.addnote(mailbox,note,subject)
-    if code == True:
-        print 'send to %s successful!'%mailbox
-    else:
-        print 'send failed!'
+    
+    gmail = Gmail(user,pawd)
+    gmail.login()
+    try:
+        gmail.addbox(mailbox)
+    except:
+        pass
+    code = gmail.addnote(mailbox,note,subject,fmt)
+    print 'send to %s successful!'%mailbox if code == True else 'send failed'
     gmail.logout()
 
 if __name__ == '__main__':
     main()
-
 EOF
 endfunction
