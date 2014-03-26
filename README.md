@@ -11,7 +11,8 @@ So I write this.
   
 Requirements
 ===============
-* vim python2 support: vim-gnote is based on python2, so your vim should be builded with python2 support.  
+* vim python2 support: vim-gnote is based on python2, so your vim should be builded with python2 support.
+* markdown module of python 
 
 * mail account  
 > ~~gmail account~~~   
