@@ -1,15 +1,19 @@
+scriptencoding utf-8
+
 if !has("python")
     echo "Error: your vim has no python supported!"
     finish
 endif
 
 
+au BufRead,BufNewFile {*.md,*.mkd,*.markdown} set ft=markdown
 function! Gnote()
 
 let s:mail_host = exists('g:gnote_mail_host') ? g:gnote_mail_host : 'imap.gmail.com'
 let s:mail_port = exists('g:gnote_mail_port') ? g:gnote_mail_port : 993
+let s:auto_convert_mkd = exists('g:auto_convert_markdown') ? g:auto_convert_markdown : 0
 python << EOF
-
+#-*- coding:utf-8 -*-
 import imaplib
 from email.message import Message
 import vim
@@ -91,6 +95,16 @@ def main():
         pass
 
     note = '\r\n'.join(vim.current.buffer[:])
+    if vim.eval('&filetype') == 'markdown':
+        if vim.eval('s:auto_convert_mkd') == '1':
+            try:
+                import markdown
+                note = unicode(note, 'utf-8')
+                note = markdown.markdown(note).encode('utf-8')
+            except ImportError:
+                print "no module named  markdown"
+                import sys
+                sys.exit(1)
     code = gmail.addnote(mailbox,note,subject)
     if code == True:
         print 'send to %s successful!'%mailbox

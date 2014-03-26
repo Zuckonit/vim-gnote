@@ -27,6 +27,7 @@ let g:gnote_mail_host="imap host of your mail" (default is imap.google.com)
 let g:gnote_mail_port="imap port of your mail" (default is 993)
 let g:gnote_mail_username="your mail username"
 let g:gnote_mail_password="your mail password"
+let g:gnote_auto_convert_markdown=<1 or 0>  (default is 0)
 ```
   
 * change the default mailbox name (default is 'gnote')
@@ -56,15 +57,26 @@ let g:gnote_mail_username = "xxxx@qq.com"
 let g:gnote_mail_password = "your qq mail password"
 let g:gnote_mail_mailbox = "mailbox name you prefer"
 ```
+
+* if you want to auto convert the markdown to html format, please:
+  ```
+  let g:gnote_auto_convert_markdown = 1
+  ```
   
 * other email  
 ```just take above examples as reference, the imap settings can be found at the related official website```
 
 
+Issue
+=======
+> cannot be used when using two-step verification for your google email.
+> please set a special password for this plugin, here are the (steps)[https://support.google.com/accounts/answer/185833]
+
 TODO
 =======
-* markdown support
+* [√] markdown support
 * attchment support
+
 
 vim:tw=78:ts=8:ft=help:norl:noet:fen:fdl=0
 
